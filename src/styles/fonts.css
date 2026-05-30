@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
+
+* {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.font-display {
+  font-family: 'Anton', sans-serif;
+}
+
+.font-mono-label {
+  font-family: 'DM Mono', monospace;
+}
