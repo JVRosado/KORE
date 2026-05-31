@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "motion/react";
+import joaoFoto from "./assets/foto_joao.jpeg";
 
-const GREEN = "#00e64d";
+const GREEN = "#177c1f";
 const BLUE = "#013e58";
 
 // Reusable animated section reveal
@@ -128,6 +129,159 @@ function SplitText({ text, className = "", style }: { text: string; className?: 
         </span>
       ))}
     </motion.p>
+  );
+}
+//----- TIME_________________________________
+const TEAM = [
+  {
+    id: 1,
+    name: "Nayara Almeida",
+    role: "Diretora de Design",
+    img: "https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?w=600&h=700&fit=crop&auto=format",
+    short: "Especialista em identidade visual com 8 anos de experiência em branding para startups e marcas estabelecidas.",
+    full: "Ana Luiza lidera o time de design da Kore com uma abordagem que une estética e estratégia. Formada em Design Gráfico pela ESPM e com passagem por agências em São Paulo e Lisboa, ela acredita que uma boa identidade visual não é apenas bonita — ela comunica, convence e permanece. Nos últimos 8 anos, assinou mais de 80 projetos de branding, de pequenos negócios a marcas multinacionais. Na Kore, é responsável por garantir que cada entrega tenha coerência visual e impacto real.",
+    accentColor: GREEN,
+  },
+  {
+    id: 2,
+    name: "João Vitor Rosado",
+    role: "Head de Estratégia Digital",
+    img: joaoFoto,
+    short: "Formado em Sistemas de Informação e profissional da área de tecnologia, com experiência em análise de dados e desenvolvimento web",
+    full: "Sou formado em Sistemas de Informação e possuo experiência profissional na área de tecnologia, com atuação em análise de dados e desenvolvimento de soluções digitais. Tenho experiência em desenvolvimento full stack, criação de landing pages, análise de dados, banco de dados e ferramentas de Business Intelligence. Busco unir design, tecnologia e estratégia para desenvolver páginas profissionais, rápidas e eficientes. Meu objetivo é transformar ideias em soluções digitais que transmitam credibilidade, fortaleçam a presença online de empresas e proporcionem uma excelente experiência aos usuários.",
+    accentColor: BLUE,
+  },
+];
+
+function TeamModal({ person, onClose }: { person: typeof TEAM[0]; onClose: () => void }) {
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="fixed inset-0 z-50 flex items-center justify-center p-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
+      >
+        <motion.div
+          className="absolute inset-0"
+          style={{ background: "rgba(5,5,5,0.88)", backdropFilter: "blur(6px)" }}
+          onClick={onClose}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        />
+        <motion.div
+          className="relative z-10 w-full max-w-2xl overflow-hidden"
+          style={{ background: "#0d0d0d", border: "1px solid rgba(255,255,255,0.08)" }}
+          initial={{ opacity: 0, y: 40, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 30, scale: 0.97 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
+        >
+          <div className="h-1 w-full" style={{ background: person.accentColor }} />
+          <button
+            onClick={onClose}
+            className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center transition-colors"
+            style={{ border: "1px solid rgba(255,255,255,0.12)", color: "rgba(245,245,240,0.6)" }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = person.accentColor; e.currentTarget.style.color = person.accentColor; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)"; e.currentTarget.style.color = "rgba(245,245,240,0.6)"; }}
+            aria-label="Fechar"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <line x1="1" y1="1" x2="13" y2="13" />
+              <line x1="13" y1="1" x2="1" y2="13" />
+            </svg>
+          </button>
+          <div className="flex flex-col md:flex-row">
+            <div className="w-full md:w-56 shrink-0" style={{ aspectRatio: "3/4", maxHeight: "320px" }}>
+              <img src={person.img} alt={person.name} className="w-full h-full object-cover" style={{ maxHeight: "320px" }} />
+            </div>
+            <div className="flex-1 p-8 flex flex-col justify-center">
+              <span className="text-xs uppercase tracking-widest block mb-3" style={{ fontFamily: "'DM Mono', monospace", color: person.accentColor, letterSpacing: "0.2em" }}>
+                {person.role}
+              </span>
+              <h3 className="font-display uppercase mb-5" style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(1.6rem, 3vw, 2.2rem)", lineHeight: 1, color: "#f5f5f0" }}>
+                {person.name}
+              </h3>
+              <p className="leading-relaxed" style={{ color: "rgba(245,245,240,0.65)", fontSize: "0.95rem" }}>
+                {person.full}
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+function TeamSection() {
+  const [selected, setSelected] = useState<typeof TEAM[0] | null>(null);
+
+  return (
+    <>
+      <section className="py-28 px-6 md:px-16 max-w-screen-xl mx-auto">
+        <Reveal>
+          <span className="font-mono-label text-xs tracking-widest uppercase mb-6 block" style={{ fontFamily: "'DM Mono', monospace", color: GREEN, letterSpacing: "0.25em" }}>
+            — Equipe
+          </span>
+        </Reveal>
+        <Reveal>
+          <h2 className="font-display uppercase mb-16" style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(2rem, 5vw, 5rem)", lineHeight: 1, color: "#f5f5f0" }}>
+            Quem Somos Nós
+          </h2>
+        </Reveal>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-px" style={{ background: "rgba(255,255,255,0.08)" } as React.CSSProperties}>
+          {TEAM.map((person) => (
+            <StaggerItem key={person.id}>
+              <motion.div
+                className="group cursor-pointer overflow-hidden"
+                style={{ background: "#0d0d0d" }}
+                onClick={() => setSelected(person)}
+                whileHover="hover"
+              >
+                <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                  <motion.img
+                    src={person.img}
+                    alt={person.name}
+                    className="w-full h-full object-cover object-center"
+                    variants={{ hover: { scale: 1.05 } }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+                  />
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center"
+                    style={{ background: "rgba(5,5,5,0.55)" }}
+                    variants={{ hover: { opacity: 1 } }}
+                    initial={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <span
+                      className="px-6 py-3 text-xs uppercase tracking-widest font-bold"
+                      style={{ fontFamily: "'DM Mono', monospace", background: person.accentColor, color: person.accentColor === GREEN ? "#050505" : "#f5f5f0", letterSpacing: "0.2em" }}
+                    >
+                      Ver mais →
+                    </span>
+                  </motion.div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: person.accentColor }} />
+                </div>
+                <div className="p-8">
+                  <span className="text-xs uppercase tracking-widest block mb-2" style={{ fontFamily: "'DM Mono', monospace", color: person.accentColor, letterSpacing: "0.2em" }}>
+                    {person.role}
+                  </span>
+                  <h3 className="font-display uppercase mb-4" style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(1.4rem, 2.5vw, 2rem)", lineHeight: 1, color: "#f5f5f0" }}>
+                    {person.name}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(245,245,240,0.55)" }}>
+                    {person.short}
+                  </p>
+                </div>
+              </motion.div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
+      </section>
+      {selected && <TeamModal person={selected} onClose={() => setSelected(null)} />}
+    </>
   );
 }
 
@@ -791,6 +945,7 @@ export default function App() {
       <Hero />
       <Marquee text="LANDING PAGES · IDENTIDADE VISUAL · PRESENÇA DIGITAL" />
       <Manifesto />
+      <TeamSection />
       <Services />
       <Marquee text="DESIGN · ESTRATÉGIA · CONVERSÃO · MARCA · IMPACTO" reverse />
       <Stats />

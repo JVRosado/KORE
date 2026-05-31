@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react'
 function figmaAssetResolver() {
   return {
     name: 'figma-asset-resolver',
-    resolveId(id: string) {
+    resolveId(id) {
       if (id.startsWith('figma:asset/')) {
         const filename = id.replace('figma:asset/', '')
         return path.resolve(__dirname, 'src/assets', filename)
@@ -16,13 +16,10 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
-  // Necessário para o GitHub Pages
   base: '/KORE/',
 
   plugins: [
     figmaAssetResolver(),
-
-    // Os plugins React e Tailwind são necessários
     react(),
     tailwindcss(),
   ],
@@ -33,6 +30,5 @@ export default defineConfig({
     },
   },
 
-  // Tipos de arquivos permitidos para importação
   assetsInclude: ['**/*.svg', '**/*.csv'],
 })

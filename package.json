@@ -2,7 +2,6 @@
   "name": "kore",
   "private": true,
   "version": "0.0.1",
-  "homepage": "https://jvrosado.github.io/KORE",
   "type": "module",
  "scripts": {
   "dev": "vite",
