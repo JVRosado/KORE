@@ -145,7 +145,7 @@ const TEAM = [
   {
     id: 2,
     name: "João Vitor Rosado",
-    role: "Head de Estratégia Digital",
+    role: "Analista de Tecnologia e Soluções Digitais",
     img: joaoFoto,
     short: "Formado em Sistemas de Informação e profissional da área de tecnologia, com experiência em análise de dados e desenvolvimento web",
     full: "Sou formado em Sistemas de Informação e possuo experiência profissional na área de tecnologia, com atuação em análise de dados e desenvolvimento de soluções digitais. Tenho experiência em desenvolvimento full stack, criação de landing pages, análise de dados, banco de dados e ferramentas de Business Intelligence. Busco unir design, tecnologia e estratégia para desenvolver páginas profissionais, rápidas e eficientes. Meu objetivo é transformar ideias em soluções digitais que transmitam credibilidade, fortaleçam a presença online de empresas e proporcionem uma excelente experiência aos usuários.",
@@ -420,7 +420,7 @@ function Services() {
     {
       num: "01",
       title: "Landing Pages",
-      desc: "Páginas focadas em conversão, com copy estratégico, design maximalista e performance rápida. Feitas para transformar visitante em cliente.",
+      desc: "Páginas focadas em conversão, com copy estratégico, designe performance rápida. Feitas para transformar visitante em cliente.",
       items: ["Design responsivo", "Copy estratégico", "SEO on-page", "Integração com CRM", "Entrega em 7 dias"],
     },
     {
@@ -613,7 +613,7 @@ function Work() {
   );
 }
 
-// ─── Process ─────────────────────────────────────────────────────────────────
+// ─── processos - como funciona ─────────────────────────────────────────────────────────────────
 function Process() {
   const steps = [
     { n: "01", title: "Briefing", desc: "Um formulário direto + call de 30 min para entender profundamente sua marca, público e objetivos." },
@@ -638,7 +638,8 @@ function Process() {
             Processo
           </h2>
         </Reveal>
-
+        
+        {/*Responsavel por configurar numeros do COMO FUNCIONA*/}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-px" style={{ background: "rgba(255,255,255,0.06)" }}>
           {steps.map((s, i) => (
             <Reveal key={s.n} delay={i * 0.12} direction="up">
@@ -906,8 +907,8 @@ function Footer() {
     <footer className="px-6 md:px-16 py-12" style={{ background: "#050505", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
       <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 flex items-center justify-center" style={{ border: `1px solid ${GREEN}` }}>
-            <span className="font-display" style={{ fontFamily: "'Anton', sans-serif", color: GREEN, fontSize: "1rem" }}>V</span>
+          <div className="w-8 h-8 flex items-center justify-center" style={{ background: BLUE }}>
+            <span className="font-display" style={{ fontFamily: "'Anton', sans-serif", color: "#f5f5f0", fontSize: "1rem" }}>K</span>
           </div>
           <span className="font-display uppercase tracking-wider" style={{ fontFamily: "'Anton', sans-serif", fontSize: "1.1rem", color: "#f5f5f0" }}>
             KORE
@@ -915,7 +916,7 @@ function Footer() {
         </div>
 
         <span className="text-xs" style={{ fontFamily: "'DM Mono', monospace", color: "rgba(245,245,240,0.3)", letterSpacing: "0.1em" }}>
-          © 2025 Verde Studio · Todos os direitos reservados
+          © 2026 KORE Studio · Todos os direitos reservados
         </span>
 
         <div className="flex gap-6">
