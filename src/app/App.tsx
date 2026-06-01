@@ -136,10 +136,10 @@ const TEAM = [
   {
     id: 1,
     name: "Nayara Almeida",
-    role: "Diretora de Design",
+    role: "Direção Criativa e Estratégia Digital",
     img: "https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?w=600&h=700&fit=crop&auto=format",
-    short: "Especialista em identidade visual com 8 anos de experiência em branding para startups e marcas estabelecidas.",
-    full: "Ana Luiza lidera o time de design da Kore com uma abordagem que une estética e estratégia. Formada em Design Gráfico pela ESPM e com passagem por agências em São Paulo e Lisboa, ela acredita que uma boa identidade visual não é apenas bonita — ela comunica, convence e permanece. Nos últimos 8 anos, assinou mais de 80 projetos de branding, de pequenos negócios a marcas multinacionais. Na Kore, é responsável por garantir que cada entrega tenha coerência visual e impacto real.",
+    short: "Responsável por transformar ideias em conexões reais, unindo criatividade e estratégia para fortalecer marcas no ambiente digital",
+    full: "Responsável por transformar ideias em conexões reais, unindo criatividade e estratégia para fortalecer marcas no ambiente digital. Atua no planejamento, desenvolvimento de conteúdo e construção de experiências que refletem a essência de cada projeto de forma autêntica e relevante.",
     accentColor: GREEN,
   },
   {
