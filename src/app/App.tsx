@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "motion/react";
 import joaoFoto from "./assets/foto_joao.jpeg";
+import nayaraFoto from "./assets/NayaraFoto.jpeg";
 import heroBg from "./assets/Korefudoverde.jpg";
 const GREEN = "#177c1f";
 const BLUE = "#013e58";
@@ -137,7 +138,7 @@ const TEAM = [
     id: 1,
     name: "Nayara Almeida",
     role: "Direção Criativa e Estratégia Digital",
-    img: "https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?w=600&h=700&fit=crop&auto=format",
+    img: nayaraFoto,
     short: "Responsável por transformar ideias em conexões reais, unindo criatividade e estratégia para fortalecer marcas no ambiente digital",
     full: "Responsável por transformar ideias em conexões reais, unindo criatividade e estratégia para fortalecer marcas no ambiente digital. Atua no planejamento, desenvolvimento de conteúdo e construção de experiências que refletem a essência de cada projeto de forma autêntica e relevante.",
     accentColor: GREEN,
@@ -145,7 +146,7 @@ const TEAM = [
   {
     id: 2,
     name: "João Vitor Rosado",
-    role: "Analista de Tecnologia e Soluções Digitais",
+    role: "Desenvolvimento Digital e Tecnologia",
     img: joaoFoto,
     short: "Formado em Sistemas de Informação e profissional da área de tecnologia, com experiência em análise de dados e desenvolvimento web",
     full: "Sou formado em Sistemas de Informação e possuo experiência profissional na área de tecnologia, com atuação em análise de dados e desenvolvimento de soluções digitais. Tenho experiência em desenvolvimento full stack, criação de landing pages, análise de dados, banco de dados e ferramentas de Business Intelligence. Busco unir design, tecnologia e estratégia para desenvolver páginas profissionais, rápidas e eficientes. Meu objetivo é transformar ideias em soluções digitais que transmitam credibilidade, fortaleçam a presença online de empresas e proporcionem uma excelente experiência aos usuários.",
