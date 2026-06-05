@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "motion/react";
 import joaoFoto from "./assets/foto_joao.jpeg";
-
+import heroBg from "./assets/Korefudoverde.jpg";
 const GREEN = "#177c1f";
 const BLUE = "#013e58";
 
@@ -285,7 +285,7 @@ function TeamSection() {
   );
 }
 
-// ─── Hero ────────────────────────────────────────────────────────────────────
+// ─── Hero configuração da tela inicial do site────────────────────────────────────────────────────────────────────
 function Hero() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -298,11 +298,12 @@ function Hero() {
       {/* Parallax image */}
       <motion.div className="absolute inset-0 z-0" style={{ y, scale }}>
         <img
-          src="https://images.unsplash.com/photo-1510519138101-570d1dca3d66?w=1920&h=1080&fit=crop&auto=format"
+          src={heroBg}
           alt="Estúdio de design criativo"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.75) 100%)" }} />
+       // Depois
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(5,5,5,0) 10%, rgba(5,5,5,0.95) 80%)" }} />
       </motion.div>
 
       {/* Logo & headline */}
@@ -351,8 +352,8 @@ function Hero() {
             className="inline-block px-10 py-4 uppercase tracking-widest text-xs font-bold transition-all duration-300 hover:scale-105"
             style={{
               fontFamily: "'DM Mono', monospace",
-              background: GREEN,
-              color: "#050505",
+              background: BLUE,
+              color: "#f5f5f0",
               letterSpacing: "0.2em",
             }}
           >
@@ -373,7 +374,7 @@ function Hero() {
         </span>
         <motion.div
           className="w-px h-12"
-          style={{ background: GREEN }}
+          style={{ background: BLUE }}
           animate={{ scaleY: [1, 0.3, 1] }}
           transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -638,7 +639,7 @@ function Process() {
             Processo
           </h2>
         </Reveal>
-        
+
         {/*Responsavel por configurar numeros do COMO FUNCIONA*/}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-px" style={{ background: "rgba(255,255,255,0.06)" }}>
           {steps.map((s, i) => (
