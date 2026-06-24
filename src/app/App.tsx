@@ -146,7 +146,7 @@ const TEAM = [
   {
     id: 2,
     name: "João Vitor Rosado",
-    role: "Desenvolvimento Digital e Tecnologia",
+    role: "Analista de Tecnologia e Soluções Digitais",
     img: joaoFoto,
     short: "Formado em Sistemas de Informação e profissional da área de tecnologia, com experiência em análise de dados e desenvolvimento web",
     full: "Sou formado em Sistemas de Informação e possuo experiência profissional na área de tecnologia, com atuação em análise de dados e desenvolvimento de soluções digitais. Tenho experiência em desenvolvimento full stack, criação de landing pages, análise de dados, banco de dados e ferramentas de Business Intelligence. Busco unir design, tecnologia e estratégia para desenvolver páginas profissionais, rápidas e eficientes. Meu objetivo é transformar ideias em soluções digitais que transmitam credibilidade, fortaleçam a presença online de empresas e proporcionem uma excelente experiência aos usuários.",
