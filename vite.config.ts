@@ -16,8 +16,6 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
-  base: '/KORE/',
-
   plugins: [
     figmaAssetResolver(),
     react(),
