@@ -353,7 +353,7 @@ function Hero() {
             className="inline-block px-10 py-4 uppercase tracking-widest text-xs font-bold transition-all duration-300 hover:scale-105"
             style={{
               fontFamily: "'DM Mono', monospace",
-              background: GREEN,
+              background: BLUE,
               color: "",
               letterSpacing: "0.2em",
             }}
