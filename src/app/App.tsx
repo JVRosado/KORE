@@ -353,7 +353,7 @@ function Hero() {
             className="inline-block px-10 py-4 uppercase tracking-widest text-xs font-bold transition-all duration-300 hover:scale-105"
             style={{
               fontFamily: "'DM Mono', monospace",
-              background: BLUE,
+              background: GREEN,
               color: "",
               letterSpacing: "0.2em",
             }}
@@ -777,9 +777,9 @@ function Contact() {
             <Reveal delay={0.3}>
               <div className="mt-12 space-y-4">
                 {[
-                  { label: "Email", val: "oi@verdestudio.com.br" },
-                  { label: "WhatsApp", val: "+55 11 99999-0000" },
-                  { label: "Instagram", val: "@verdestudio" },
+                  { label: "Email", val: "linkoreoficial@gmail.com" },
+                 // { label: "WhatsApp", val: "+55 11 99999-0000" },
+                  { label: "Instagram", val: "@linkore.oficial" },
                 ].map((c) => (
                   <div key={c.label} className="flex items-center gap-4 py-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                     <span className="text-xs w-24 shrink-0" style={{ fontFamily: "'DM Mono', monospace", color: "rgba(245,245,240,0.4)", letterSpacing: "0.1em" }}>
@@ -816,8 +816,8 @@ function Contact() {
               ) : (
                 <motion.form key="form" onSubmit={handleSubmit} className="space-y-5">
                   {[
-                    { name: "nome", label: "Nome completo", type: "text", placeholder: "João Silva" },
-                    { name: "email", label: "Email", type: "email", placeholder: "joao@empresa.com" },
+                    { name: "nome", label: "Nome completo", type: "text", placeholder: "Seu nome" },
+                    { name: "email", label: "Email", type: "email", placeholder: "e-mail para contato" },
                     { name: "empresa", label: "Empresa / Projeto", type: "text", placeholder: "Minha Empresa" },
                   ].map((field) => (
                     <div key={field.name}>
