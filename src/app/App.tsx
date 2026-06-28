@@ -322,13 +322,14 @@ function Hero() {
             <span className="font-display text-5xl" style={{ fontFamily: "'Anton', sans-serif", color: "#f5f5f0" }}>K</span>
           </div>
         </motion.div>
-
+        {/* Imagem que mostra a logo LINKORE */}
         <motion.img
           src={koreLogo}
           alt="KORE."
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
+          className="mx-auto block"
           style={{ width: "clamp(200px, 50vw, 600px)", height: "auto" }}
         />
 
