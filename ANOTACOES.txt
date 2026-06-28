@@ -1,0 +1,283 @@
+================================================================================
+  ANOTAÇÕES — KORE Studio
+================================================================================
+
+
+================================================================================
+  API DE CONTATO — api/contact.ts
+  Como funciona o envio de e-mail pelo formulário do site
+================================================================================
+
+--------------------------------------------------------------------------------
+VISÃO GERAL
+--------------------------------------------------------------------------------
+
+O formulário da seção "Entre em contato" no site envia os dados para uma
+Serverless Function hospedada no Vercel. Essa função recebe os dados,
+monta um e-mail formatado em HTML e o envia para o Gmail da KORE usando
+a biblioteca Nodemailer.
+
+Arquivos envolvidos:
+  - api/contact.ts        → backend (a função que roda no servidor)
+  - src/app/App.tsx       → frontend (o formulário na tela)
+  - package.json          → dependências (nodemailer, @vercel/node)
+  - Painel do Vercel      → variáveis de ambiente (senhas/credenciais)
+
+
+--------------------------------------------------------------------------------
+PARTE 1 — IMPORTS
+--------------------------------------------------------------------------------
+
+  import type { VercelRequest, VercelResponse } from "@vercel/node";
+  import nodemailer from "nodemailer";
+
+- VercelRequest / VercelResponse
+    São os tipos do TypeScript que representam a requisição HTTP que chega
+    e a resposta que a função vai devolver. Vêm do pacote @vercel/node,
+    que é o SDK oficial do Vercel para funções serverless em Node.js.
+
+- nodemailer
+    É a biblioteca responsável por conectar no Gmail e disparar o e-mail.
+    Funciona como um "cliente de e-mail" programático.
+
+
+--------------------------------------------------------------------------------
+PARTE 2 — FUNÇÃO escape()
+--------------------------------------------------------------------------------
+
+  function escape(str: string) {
+    return str.replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;");
+  }
+
+- Por que isso existe?
+    O e-mail é enviado em HTML. Se o usuário digitar caracteres como
+    < > & no formulário, o navegador de e-mail pode interpretar isso
+    como código HTML e quebrar a formatação — ou pior, injetar conteúdo
+    malicioso (ataque chamado XSS).
+
+- O que ela faz?
+    Converte os caracteres perigosos para suas versões seguras em HTML:
+      &  →  &amp;
+      <  →  &lt;
+      >  →  &gt;
+
+- Exemplo:
+    Se o usuário digitar: <script>alert("hack")</script>
+    Vira:                 &lt;script&gt;alert("hack")&lt;/script&gt;
+    E é exibido como texto puro no e-mail, sem executar nada.
+
+
+--------------------------------------------------------------------------------
+PARTE 3 — MAPA DE SERVIÇOS
+--------------------------------------------------------------------------------
+
+  const SERVICOS: Record<string, string> = {
+    landing:  "Landing Page",
+    visual:   "Identidade Visual",
+    completo: "Presença Completa",
+    outro:    "Outro",
+  };
+
+- O formulário envia o valor interno do <select>, que são códigos curtos
+  como "landing", "visual", etc.
+
+- Esse objeto serve para traduzir o código técnico para o nome legível
+  que vai aparecer no e-mail recebido.
+
+- Exemplo:
+    O formulário envia:  servico: "landing"
+    O e-mail exibe:      Serviço: Landing Page
+
+
+--------------------------------------------------------------------------------
+PARTE 4 — FUNÇÃO PRINCIPAL handler()
+--------------------------------------------------------------------------------
+
+  export default async function handler(req: VercelRequest, res: VercelResponse)
+
+- É a função principal que o Vercel chama automaticamente toda vez que
+  alguém faz uma requisição para /api/contact.
+
+- É assíncrona (async) porque o envio de e-mail é uma operação que
+  demora um pouco e precisa "aguardar" a resposta do servidor do Gmail.
+
+
+  ► VERIFICAÇÃO DO MÉTODO HTTP
+
+      if (req.method !== "POST") {
+        return res.status(405).json({ message: "Method not allowed" });
+      }
+
+  - A rota só aceita POST (que é o método usado pelo formulário ao enviar).
+  - Se alguém tentar acessar via GET (digitar a URL no navegador, por
+    exemplo), recebe erro 405 (Method Not Allowed).
+
+
+  ► EXTRAÇÃO DOS DADOS DO FORMULÁRIO
+
+      const { nome, email, empresa, servico, mensagem } = req.body ?? {};
+
+  - req.body contém o JSON que o frontend enviou.
+  - O ?? {} garante que, se o body vier vazio/nulo, não quebre o código.
+
+
+  ► VALIDAÇÃO DOS CAMPOS OBRIGATÓRIOS
+
+      if (!nome || !email || !mensagem) {
+        return res.status(400).json({ message: "Campos obrigatórios faltando." });
+      }
+
+  - Verifica se os campos essenciais foram preenchidos.
+  - Se algum faltar, retorna erro 400 (Bad Request) e para a execução.
+  - empresa e servico não são obrigatórios aqui (já são no HTML, mas
+    essa validação é uma segunda camada de segurança no servidor).
+
+
+--------------------------------------------------------------------------------
+PARTE 5 — CONFIGURAÇÃO DO NODEMAILER (transporter)
+--------------------------------------------------------------------------------
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  });
+
+- O "transporter" é o objeto responsável por se conectar ao servidor
+  de e-mail e enviar mensagens.
+
+- service: "gmail"
+    Diz ao Nodemailer que vai usar o Gmail. Ele já conhece as
+    configurações de servidor (smtp.gmail.com, porta 465/587, etc.)
+    automaticamente.
+
+- process.env.GMAIL_USER
+    O e-mail do Gmail que vai enviar as mensagens.
+    Esse valor NÃO fica no código — fica nas variáveis de ambiente
+    configuradas no painel do Vercel (em Settings > Environment Variables).
+
+- process.env.GMAIL_APP_PASSWORD
+    NÃO é a senha normal da conta Google.
+    É uma "Senha de App" gerada nas configurações de segurança do Google
+    (em Verificação em duas etapas > Senhas de app).
+    O Google exige isso para aplicações externas acessarem o Gmail via SMTP.
+
+- Por que usar variáveis de ambiente?
+    Para não expor credenciais no código-fonte. Se o repositório for
+    público ou vazar, as senhas ficam protegidas.
+
+
+--------------------------------------------------------------------------------
+PARTE 6 — ENVIO DO E-MAIL
+--------------------------------------------------------------------------------
+
+  await transporter.sendMail({
+    from:    `"KORE Studio" <${process.env.GMAIL_USER}>`,
+    to:      "linkoreoficial@gmail.com",
+    replyTo: email,
+    subject: `Novo contato via KORE Studio — ${nome}`,
+    html:    `...`,
+  });
+
+- from
+    O remetente que aparece no e-mail recebido.
+    Formato: "Nome Exibido" <endereço@gmail.com>
+
+- to
+    Para quem o e-mail vai. Fixo como linkoreoficial@gmail.com,
+    ou seja, sempre chega na caixa da KORE, independente de quem preencheu.
+
+- replyTo
+    Aqui está o truque principal: ao receber o e-mail, quando a KORE
+    clicar em "Responder", a resposta vai direto para o e-mail do cliente
+    (quem preencheu o formulário), não para o Gmail remetente.
+
+- subject
+    Assunto do e-mail. Inclui o nome do cliente para facilitar
+    identificação na caixa de entrada.
+
+- html
+    O corpo do e-mail em formato HTML. Usa uma tabela para exibir os
+    dados de forma organizada, com os valores passados pela função
+    escape() para segurança.
+
+
+--------------------------------------------------------------------------------
+PARTE 7 — TRATAMENTO DE ERROS (try/catch)
+--------------------------------------------------------------------------------
+
+  try {
+    await transporter.sendMail({ ... });
+    return res.status(200).json({ message: "Email enviado com sucesso." });
+  } catch (err) {
+    console.error("Erro ao enviar email:", err);
+    return res.status(500).json({ message: "Erro ao enviar email. Tente novamente." });
+  }
+
+- O try/catch envolve o envio para capturar qualquer falha (ex: senha
+  incorreta, sem conexão, limite do Gmail atingido).
+
+- Se der certo: retorna status 200 com mensagem de sucesso.
+  O frontend recebe isso e exibe a tela "Mensagem enviada!".
+
+- Se der errado: loga o erro real no console do Vercel (visível nos
+  logs do deploy) e retorna status 500 para o frontend.
+  O frontend exibe a mensagem de erro em vermelho abaixo do botão.
+
+
+--------------------------------------------------------------------------------
+PARTE 8 — COMO O FRONTEND SE CONECTA COM A API
+--------------------------------------------------------------------------------
+
+No App.tsx (função Contact, linha ~733):
+
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(form),
+  });
+
+- A URL "/api/contact" é relativa. No Vercel, qualquer arquivo dentro
+  da pasta /api/ vira automaticamente uma rota acessível nesse endereço.
+
+- O formulário serializa os dados para JSON (JSON.stringify) e envia
+  com o cabeçalho Content-Type: application/json.
+
+- IMPORTANTE: isso SÓ FUNCIONA quando hospedado no Vercel.
+  Rodando localmente com "npm run dev" (Vite), a rota /api/contact
+  não existe e o formulário retorna erro de rede.
+
+
+--------------------------------------------------------------------------------
+FLUXO COMPLETO RESUMIDO
+--------------------------------------------------------------------------------
+
+  1. Usuário preenche o formulário e clica em "Enviar mensagem"
+  2. Frontend faz POST para /api/contact com os dados em JSON
+  3. Vercel roteia a requisição para api/contact.ts
+  4. A função valida os dados recebidos
+  5. Nodemailer se conecta ao Gmail usando as credenciais das env vars
+  6. E-mail formatado em HTML é enviado para linkoreoficial@gmail.com
+  7. Vercel retorna status 200 para o frontend
+  8. Frontend exibe a tela de "Mensagem enviada!"
+
+
+--------------------------------------------------------------------------------
+VARIÁVEIS DE AMBIENTE NECESSÁRIAS (configurar no painel do Vercel)
+--------------------------------------------------------------------------------
+
+  GMAIL_USER          = linkoreoficial@gmail.com
+  GMAIL_APP_PASSWORD  = (senha de app gerada no Google — 16 caracteres)
+
+  Como gerar a senha de app:
+    1. Acesse myaccount.google.com
+    2. Segurança > Verificação em duas etapas (precisa estar ativa)
+    3. Senhas de app > Criar
+    4. Copiar os 16 caracteres gerados e colocar na variável do Vercel
+
+
+================================================================================

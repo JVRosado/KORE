@@ -146,10 +146,11 @@ const TEAM = [
   {
     id: 2,
     name: "João Vitor Rosado",
-    role: "Analista de Tecnologia e Soluções Digitais",
+    role: "Desenvolvimento Digital e Tecnologia",
     img: joaoFoto,
-    short: "Formado em Sistemas de Informação e profissional da área de tecnologia, com experiência em análise de dados e desenvolvimento web",
-    full: "Sou formado em Sistemas de Informação e possuo experiência profissional na área de tecnologia, com atuação em análise de dados e desenvolvimento de soluções digitais. Tenho experiência em desenvolvimento full stack, criação de landing pages, análise de dados, banco de dados e ferramentas de Business Intelligence. Busco unir design, tecnologia e estratégia para desenvolver páginas profissionais, rápidas e eficientes. Meu objetivo é transformar ideias em soluções digitais que transmitam credibilidade, fortaleçam a presença online de empresas e proporcionem uma excelente experiência aos usuários.",
+    short: "Transforma ideias em soluções digitais funcionais e eficientes. Atua no desenvolvimento de páginas",
+    full: "Transforma ideias em soluções digitais funcionais e eficientes. Atua no desenvolvimento de páginas, sistemas e experiências digitais que unem tecnologia, performance e estratégia, garantindo que cada projeto entregue credibilidade, presença e resultados.",
+   
     accentColor: BLUE,
   },
 ];
@@ -241,7 +242,7 @@ function TeamSection() {
                 onClick={() => setSelected(person)}
                 whileHover="hover"
               >
-                <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                <div className="relative overflow-hidden" style={{ aspectRatio: "3.4/3" }}>
                   <motion.img
                     src={person.img}
                     alt={person.name}
@@ -968,12 +969,12 @@ export default function App() {
       <Hero />
       <Marquee text="LANDING PAGES · IDENTIDADE VISUAL · PRESENÇA DIGITAL" />
       <Manifesto />
-      <TeamSection />
       <Services />
       <Marquee text="DESIGN · ESTRATÉGIA · CONVERSÃO · MARCA · IMPACTO" reverse />
       <Stats />
       <Work />
       <Process />
+      <TeamSection />
       <CTABanner />
       <Contact />
       <Footer />
