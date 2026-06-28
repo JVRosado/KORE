@@ -354,7 +354,7 @@ function Hero() {
             style={{
               fontFamily: "'DM Mono', monospace",
               background: BLUE,
-              color: "#f5f5f0",
+              color: "",
               letterSpacing: "0.2em",
             }}
           >
@@ -724,18 +724,32 @@ function Contact() {
   const [form, setForm] = useState({ nome: "", email: "", empresa: "", servico: "", mensagem: "" });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.message ?? "Erro ao enviar mensagem.");
+      }
       setSent(true);
-    }, 1400);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Erro ao enviar mensagem.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -893,6 +907,12 @@ function Contact() {
                   >
                     {loading ? "Enviando..." : "Enviar mensagem →"}
                   </motion.button>
+
+                  {error && (
+                    <p className="text-xs text-center" style={{ color: "#ff4d4d", fontFamily: "'DM Mono', monospace" }}>
+                      {error}
+                    </p>
+                  )}
                 </motion.form>
               )}
             </AnimatePresence>
