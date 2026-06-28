@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, useInView, AnimatePresence } from "mot
 import joaoFoto from "./assets/foto_joao.jpeg";
 import nayaraFoto from "./assets/NayaraFoto.jpeg";
 import heroBg from "./assets/Korefudoverde.jpg";
+import koreLogo from "./assets/Logo01.png";
 const GREEN = "#177c1f";
 const BLUE = "#013e58";
 
@@ -150,7 +151,7 @@ const TEAM = [
     img: joaoFoto,
     short: "Transforma ideias em soluções digitais funcionais e eficientes. Atua no desenvolvimento de páginas",
     full: "Transforma ideias em soluções digitais funcionais e eficientes. Atua no desenvolvimento de páginas, sistemas e experiências digitais que unem tecnologia, performance e estratégia, garantindo que cada projeto entregue credibilidade, presença e resultados.",
-   
+
     accentColor: BLUE,
   },
 ];
@@ -322,16 +323,14 @@ function Hero() {
           </div>
         </motion.div>
 
-        <motion.h1
+        <motion.img
+          src={koreLogo}
+          alt="KORE."
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
-          className="font-display uppercase tracking-tight"
-          style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(3rem, 10vw, 9rem)", lineHeight: 0.9, color: "#f5f5f0" }}
-        >
-          KORE<span style={{ color: GREEN }}>.</span>
-          <br />
-        </motion.h1>
+          style={{ width: "clamp(200px, 50vw, 600px)", height: "auto" }}
+        />
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -779,7 +778,7 @@ function Contact() {
               <div className="mt-12 space-y-4">
                 {[
                   { label: "Email", val: "linkoreoficial@gmail.com" },
-                 // { label: "WhatsApp", val: "+55 11 99999-0000" },
+                  // { label: "WhatsApp", val: "+55 11 99999-0000" },
                   { label: "Instagram", val: "@linkore.oficial" },
                 ].map((c) => (
                   <div key={c.label} className="flex items-center gap-4 py-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
