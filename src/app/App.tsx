@@ -4,6 +4,7 @@ import joaoFoto from "./assets/foto_joao.jpeg";
 import nayaraFoto from "./assets/NayaraFoto.jpeg";
 import heroBg from "./assets/Korefudoverde.jpg";
 import koreLogo from "./assets/Logo01.png";
+import simboloBranco from "./assets/simbolobranco.png";
 const GREEN = "#177c1f";
 const BLUE = "#013e58";
 
@@ -318,8 +319,9 @@ function Hero() {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as const }}
           className="mb-8 flex justify-center"
         >
+          {/* Logo que fica acima do nome */}
           <div className="w-28 h-28 border-2 flex items-center justify-center" style={{ background: BLUE }}>
-            <span className="font-display text-5xl" style={{ fontFamily: "'Anton', sans-serif", color: "#f5f5f0" }}>K</span>
+            <img src={simboloBranco} alt="KORE símbolo" className="w-20 h-20 object-contain" />
           </div>
         </motion.div>
         {/* Imagem que mostra a logo LINKORE */}
@@ -690,7 +692,7 @@ function CTABanner() {
             letterSpacing: "-0.02em",
           }}
         >
-          KORE
+          LINKORE
         </span>
       </div>
 
