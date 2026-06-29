@@ -933,15 +933,16 @@ function Footer() {
       <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 flex items-center justify-center" style={{ background: BLUE }}>
-            <span className="font-display" style={{ fontFamily: "'Anton', sans-serif", color: "#f5f5f0", fontSize: "1rem" }}>K</span>
+            {/* Logo no rodapé */}
+            <img src={simboloBranco} alt="KORE símbolo" className="w-5 h-5 object-contain" />
           </div>
           <span className="font-display uppercase tracking-wider" style={{ fontFamily: "'Anton', sans-serif", fontSize: "1.1rem", color: "#f5f5f0" }}>
-            KORE
+            Linkore
           </span>
         </div>
 
         <span className="text-xs" style={{ fontFamily: "'DM Mono', monospace", color: "rgba(245,245,240,0.3)", letterSpacing: "0.1em" }}>
-          © 2026 KORE Studio · Todos os direitos reservados
+          © 2026 LinKore · Todos os direitos reservados
         </span>
 
         <div className="flex gap-6">
