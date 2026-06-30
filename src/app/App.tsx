@@ -6,7 +6,7 @@ import heroBg from "./assets/Korefudoverde.jpg";
 import koreLogo from "./assets/Logo01.png";
 import simboloBranco from "./assets/simbolobranco.png";
 const GREEN = "#177c1f";
-const BLUE = "#013e58";
+const BLUE = "#326762";
 
 // Reusable animated section reveal
 function Reveal({
