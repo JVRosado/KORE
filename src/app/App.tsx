@@ -508,10 +508,10 @@ function Services() {
 // ─── Big Number Stats ─────────────────────────────────────────────────────────
 function Stats() {
   const stats = [
-    { num: "120+", label: "Projetos entregues" },
-    { num: "98%", label: "Clientes satisfeitos" },
-    { num: "7d", label: "Tempo médio de entrega" },
-    { num: "3x", label: "Média de aumento em conversão" },
+    { num: "FOCO", label: "Estratégias personalizadas para cada marca" },
+    { num: "AGILIDADE", label: "Processos otimizados para entregas eficientes" },
+    { num: "PARCERIA", label: "Trabalhamos juntos com você em cada etapa do projeto" },
+    { num: "RESULTADO", label: "Soluções que geram impacto e fazem sua marca crescer" },
   ];
 
   return (
@@ -522,11 +522,11 @@ function Stats() {
             <div className="flex flex-col items-center justify-center py-12 px-6 text-center">
               <span
                 className="font-display"
-                style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(2.8rem, 6vw, 5rem)", lineHeight: 1, color: "#f5f5f0" }}
+                style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(2.8rem, 6vw, 4rem)", lineHeight: 1, color: "#f5f5f0" }}
               >
                 {s.num}
               </span>
-              <span className="mt-3 text-xs uppercase tracking-widest" style={{ fontFamily: "'DM Mono', monospace", color: "#f5f5f0", letterSpacing: "0.15em" }}>
+              <span className="mt-5 text-xs uppercase tracking-widest" style={{ fontFamily: "'DM Mono', monospace", color: "#f5f5f0", letterSpacing: "0.15em" }}>
                 {s.label}
               </span>
             </div>
