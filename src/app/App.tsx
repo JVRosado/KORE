@@ -5,6 +5,10 @@ import nayaraFoto from "./assets/NayaraFoto.jpeg";
 import heroBg from "./assets/Korefudoverde.jpg";
 import koreLogo from "./assets/Logo01.png";
 import simboloBranco from "./assets/simbolobranco.png";
+import { TfiTarget } from "react-icons/tfi";//foco
+import { LuZap } from "react-icons/lu"; //agilidade
+import { LuUser } from "react-icons/lu"; //Parceria
+import { LuChartColumnIncreasing } from "react-icons/lu"; //Resultado
 const GREEN = "#177c1f";
 const BLUE = "#326762";
 
@@ -508,10 +512,11 @@ function Services() {
 // ─── Big Number Stats ─────────────────────────────────────────────────────────
 function Stats() {
   const stats = [
-    { num: "FOCO", label: "Estratégias personalizadas para cada marca" },
-    { num: "AGILIDADE", label: "Processos otimizados para entregas eficientes" },
-    { num: "PARCERIA", label: "Trabalhamos juntos com você em cada etapa do projeto" },
-    { num: "RESULTADO", label: "Soluções que geram impacto e fazem sua marca crescer" },
+    { num: "FOCO", label: "Estratégias personalizadas para cada marca", icon: <TfiTarget size={40} color="#f5f5f0" /> },
+    { num: "AGILIDADE", label: "Processos otimizados para entregas eficientes", icon: <LuZap size={40} color="#f5f5f0" /> },
+    { num: "PARCERIA", label: "Trabalhamos juntos com você em cada etapa do projeto", icon: <LuUser size={40} color="#f5f5f0" /> },
+    { num: "RESULTADO", label: "Soluções que geram impacto e fazem sua marca crescer", icon: <LuChartColumnIncreasing size={40} color="#f5f5f0" /> },
+
   ];
 
   return (
@@ -520,9 +525,10 @@ function Stats() {
         {stats.map((s) => (
           <StaggerItem key={s.num}>
             <div className="flex flex-col items-center justify-center py-12 px-6 text-center">
+                {s.icon && <div className="mb-5">{s.icon}</div>}  {/* ← Renderiza os icones */}
               <span
                 className="font-display"
-                style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(2.8rem, 6vw, 4rem)", lineHeight: 1, color: "#f5f5f0" }}
+                style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(2.8rem, 6vw, 3rem)", lineHeight: 1, color: "#f5f5f0" }}
               >
                 {s.num}
               </span>
