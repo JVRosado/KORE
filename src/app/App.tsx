@@ -458,11 +458,11 @@ function Services() {
           Serviços
         </h2>
       </Reveal>
-
       <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-px" style={{ background: "rgba(255,255,255,0.08)" } as React.CSSProperties}>
         {services.map((s) => (
           <StaggerItem key={s.num}>
             <motion.div
+              //altera a cor do background do O que fazemos
               className="p-10 h-full group cursor-default"
               style={{ background: "#0d0d0d" }}
               whileHover={{ background: "#111" }}
@@ -645,10 +645,11 @@ function Process() {
         </Reveal>
 
         {/*Responsavel por configurar numeros do COMO FUNCIONA*/}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-px" style={{ background: "rgba(255,255,255,0.06)" }}>
+        {/*Essa div configura as linhas que aparecem entre os topicos do como funciona*/}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-[2px]" style={{ background: "rgba(255,255,255,0.15)", borderBottom: "2px solid rgba(255,255,255,0.15)" }}>
           {steps.map((s, i) => (
-            <Reveal key={s.n} delay={i * 0.12} direction="up">
-              <div className="p-10" style={{ background: "#0d0d0d" }}>
+            <Reveal key={s.n} delay={i * 0.12} direction="up" className="h-full">
+              <div className="p-10 h-full" style={{ background: "#0d0d0d" }}>
                 <div
                   className="font-display w-12 h-12 flex items-center justify-center mb-8 text-sm"
                   style={{ fontFamily: "'DM Mono', monospace", border: `1px solid ${GREEN}`, color: GREEN }}
