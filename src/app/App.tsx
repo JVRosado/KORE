@@ -5,6 +5,7 @@ import nayaraFoto from "./assets/NayaraFoto.jpeg";
 import heroBg from "./assets/Korefudoverde.jpg";
 import koreLogo from "./assets/Logo01.png";
 import simboloBranco from "./assets/simbolobranco.png";
+import telaCodigo from "./assets/telaCodigo.png"; //Imagem da tela do codigo
 import { TfiTarget } from "react-icons/tfi";//foco
 import { LuZap } from "react-icons/lu"; //agilidade
 import { LuUser } from "react-icons/lu"; //Parceria
@@ -547,10 +548,9 @@ function Stats() {
 function Work() {
   const projects = [
     {
-      img: "https://images.unsplash.com/photo-1645658043538-fc2bb1702cfe?w=800&h=600&fit=crop&auto=format",
-      category: "Identidade Visual",
-      title: "Marca Editorial",
-      year: "2024",
+      img: telaCodigo,
+      category: "Personalizado para você",
+      title: "Desenvolvimento WEB",
     },
     {
       img: "https://images.unsplash.com/photo-1590102426275-8d1c367070d3?w=800&h=600&fit=crop&auto=format",
@@ -584,7 +584,7 @@ function Work() {
           className="font-display uppercase mb-20"
           style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(2rem, 5vw, 5rem)", lineHeight: 1, color: "#f5f5f0" }}
         >
-          Trabalhos selecionados
+          Como transformamos sua marca
         </h2>
       </Reveal>
 
