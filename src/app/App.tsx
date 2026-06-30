@@ -400,20 +400,26 @@ function Manifesto() {
       <SplitText
         text="Sua marca não pode ser invisível. Cada pixel conta. Cada scroll importa."
         className="font-display uppercase"
-        style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(1.0rem, 2vw, 2rem)", lineHeight: 1, color: "#f5f5f0" } as React.CSSProperties}
+        style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(1.0rem, 2vw, 1.5rem)", lineHeight: 1, color: "#f5f5f0" } as React.CSSProperties}
       />
 
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 max-w-3xl">
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl">
         <Reveal delay={0.1}>
           <p className="leading-relaxed" style={{ color: "rgba(245,245,240,0.6)", fontSize: "1.1rem" }}>
-            Construímos landing pages que convertem e identidades visuais que grudam na memória. Sem template genérico. Sem meio-termo.
+            Criamos landing pages e identidades visuais que posicionam marcas no digital com estratégia, personalidade e propósito. Sem soluções genéricas. Sem presença esquecível
           </p>
         </Reveal>
         <Reveal delay={0.25}>
           <p className="leading-relaxed" style={{ color: "rgba(245,245,240,0.6)", fontSize: "1.1rem" }}>
-            Do briefing ao ar, entregamos uma presença digital que faz o cliente parar, olhar, e tomar uma decisão.
+            Transformamos ideias em experiências digitais que captam a atenção, fortalecem a marca e aproximam empresas de seus clientes, criando conexões que geram reconhecimento e oportunidades.
           </p>
         </Reveal>
+        <Reveal delay={0.4}>
+          <p className="leading-relaxed" style={{ color: "rgba(245,245,240,0.6)", fontSize: "1.1rem" }}>
+           Do planejamento ao lançamento, entregamos uma presença digital que faz sua marca ser vista, lembrada e escolhida, ajudando seu negócio a conquistar espaço em um mercado cada vez mais competitivo.
+          </p>
+        </Reveal>
+        
       </div>
     </section>
   );
@@ -701,7 +707,7 @@ function CTABanner() {
 
       <div className="relative z-10 text-center max-w-4xl mx-auto">
         <SplitText
-          text="Pronto para ter uma marca que faz barulho?"
+          text="Pronto para transformar sua presença digital?"
           className="font-display uppercase"
           style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(2.2rem, 3.0vw, 3.0rem)", lineHeight: 1, color: "#f5f5f0" } as React.CSSProperties}
         />
