@@ -2,6 +2,131 @@
   ANOTAÇÕES — KORE Studio
 ================================================================================
 
+================================================================================
+  ANÁLISE DO SITE — PONTOS POSITIVOS, NEGATIVOS E MELHORIAS
+================================================================================
+
+--------------------------------------------------------------------------------
+PONTOS POSITIVOS
+--------------------------------------------------------------------------------
+
+VISUAL E ANIMAÇÕES
+  - Estética dark maximalista consistente — paleta preta + verde + azul coerente
+    e transmite credibilidade
+  - Animações sofisticadas: parallax no hero, scroll reveal, split text por
+    palavra, stagger nos cards
+  - Tipografia expressiva (Anton + DM Mono) com contraste forte e boa leitura
+  - Ticker marquee dividindo seções é elegante e reforça os serviços
+  - Modal da equipe com backdrop blur e barra colorida é detalhe de acabamento
+    profissional
+  - CTA Banner com texto gigante "LINKORE" fantasma no fundo é toque criativo
+  - Cards de serviço com hover sutil mas elegante
+
+CONTEÚDO
+  - Copy direto e assertivo: "Sem template genérico. Sem meio-termo."
+  - Manifesto tem impacto: "Sua marca não pode ser invisível"
+  - Processo com 4 etapas elimina objeções de clientes sobre como funciona
+  - Serviços têm itens específicos (bullets) que facilitam a tomada de decisão
+  - Formulário bem construído com loading, feedback de sucesso e estado de erro
+  - Equipe com foto e texto humaniza a marca
+
+
+--------------------------------------------------------------------------------
+PONTOS NEGATIVOS E O QUE MELHORAR
+--------------------------------------------------------------------------------
+
+CREDIBILIDADE — PRIORIDADE ALTA
+
+  1. Portfólio com imagens genéricas do Unsplash
+     Os projetos têm nomes como "Marca Editorial" e "Consultoria Financeira"
+     mas as imagens são fotos aleatórias de tecnologia sem relação com os
+     projetos. Isso quebra totalmente a credibilidade.
+     → Substituir por mockups reais ou remover a seção até ter portfólio real.
+
+  2. Stats sem base comprovada
+     "120+ projetos entregues", "98% clientes satisfeitos" — se o estúdio for
+     novo, esses números parecem inventados e geram desconfiança.
+     → Se forem reais, adicionar contexto. Se não forem, substituir por
+       diferenciais verdadeiros como "Entrega em 7 dias garantida".
+
+  3. Sem depoimentos de clientes reais
+     Nenhuma prova social. É a seção que mais converte em landing pages
+     de serviço.
+     → Adicionar ao menos 2-3 depoimentos com nome, empresa e foto.
+
+CONTEÚDO INCONSISTENTE
+
+  4. Nome da marca em 4 formas diferentes
+     "KORE", "LINKORE", "LinKore" e "Linkore" aparecem em lugares distintos.
+     → Padronizar um nome oficial em todo o site.
+
+  5. "role" no hero em inglês
+     O indicador de scroll diz "role" mas o restante do site é em português.
+     → Trocar para "rolar" ou simplesmente remover o texto.
+
+  6. Texto curto do João cortado (App.tsx linha 153)
+     "Atua no desenvolvimento de páginas" — frase incompleta.
+     → Completar o texto da descrição curta.
+
+LINKS E CONTATO
+
+  7. WhatsApp comentado (App.tsx linha 784)
+     É o canal de conversão mais eficaz no Brasil e está desabilitado.
+     → Adicionar número real e reativar.
+
+  8. Instagram, Behance e LinkedIn no footer apontam para "#"
+     Nenhum dos links sociais funciona.
+     → Adicionar URLs reais. Se o Behance não existir, remover da lista.
+
+BUGS TÉCNICOS
+
+  9. Cor do texto do botão "Começar agora" está vazia (App.tsx linha 360)
+     color: "" — o texto pode ficar invisível dependendo do browser.
+     → Definir explicitamente: color: "#f5f5f0" ou outra cor com contraste.
+
+  10. lang="en" no HTML (index.html linha 3)
+      Site em português mas declarado como idioma inglês.
+      → Corrigir para lang="pt-BR" — afeta SEO e acessibilidade.
+
+  11. noindex/nofollow no meta robots (index.html linha 10)
+      O site está bloqueando o Google de indexar as páginas.
+      → Remover essa linha antes de publicar em produção.
+
+AUSÊNCIAS ESTRATÉGICAS
+
+  12. Sem menu de navegação
+      Não há nav bar. O usuário não sabe o que tem no site sem scrollar tudo.
+      → Adicionar menu fixo com links âncora para as seções.
+
+  13. Sem referência a preços
+      Nenhuma faixa de valor nos serviços. Para muitos clientes é barreira.
+      → Adicionar ao menos "a partir de R$ X" em cada serviço.
+
+
+--------------------------------------------------------------------------------
+RESUMO DE PRIORIDADE
+--------------------------------------------------------------------------------
+
+  URGENTE (antes de mostrar para clientes):
+    - Padronizar nome da marca
+    - Corrigir cor do botão "Começar agora"
+    - Substituir portfólio genérico por real (ou remover)
+    - Ativar WhatsApp
+    - Corrigir links do footer
+
+  ANTES DE PUBLICAR EM PRODUÇÃO:
+    - Remover noindex/nofollow do meta robots
+    - Corrigir lang para "pt-BR"
+    - Revisar stats — só manter se forem verídicos
+
+  PARA CRESCER E CONVERTER MAIS:
+    - Adicionar depoimentos reais
+    - Adicionar faixa de preço nos serviços
+    - Criar menu de navegação fixo
+
+
+================================================================================
+
 
 ================================================================================
   API DE CONTATO — api/contact.ts
