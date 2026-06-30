@@ -441,9 +441,10 @@ function Services() {
       items: ["Tudo dos pacotes 01 e 02", "Posts para redes sociais", "Stories templates", "Prioridade de atendimento"],
     },
   ];
-
+  
   return (
-    <section className="py-28 px-6 md:px-16 max-w-screen-xl mx-auto">
+    //Espaçamento do Serviçoes para o manifesto
+    <section className="py-16 px-6 md:px-16 max-w-screen-xl mx-auto">
       <Reveal>
         <span className="font-mono-label text-xs tracking-widest uppercase mb-6 block" style={{ fontFamily: "'DM Mono', monospace", color: GREEN, letterSpacing: "0.25em" }}>
           — O que fazemos
@@ -689,7 +690,8 @@ function CTABanner() {
             fontFamily: "'Anton', sans-serif",
             fontSize: "20vw",
             lineHeight: 1,
-            color: "rgba(0,230,77,0.04)",
+            //Define a opacidade do LINKORE que fica no fundo da tela
+            color: "rgba(0,230,77,0.08)",
             letterSpacing: "-0.02em",
           }}
         >
@@ -709,7 +711,7 @@ function CTABanner() {
             className="mt-12 inline-block px-14 py-5 uppercase tracking-widest text-xs font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             style={{
               fontFamily: "'DM Mono', monospace",
-              background: GREEN,
+              background: BLUE,
               color: "#050505",
               letterSpacing: "0.2em",
               boxShadow: `0 0 60px ${GREEN}33`,
