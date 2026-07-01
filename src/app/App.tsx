@@ -395,37 +395,39 @@ function Hero() {
 // ─── Manifesto ───────────────────────────────────────────────────────────────
 function Manifesto() {
   return (
-    <section className="py-36 px-6 md:px-16 max-w-screen-xl mx-auto">
-      <Reveal direction="left">
-        <span className="font-mono-label text-xs tracking-widest uppercase mb-6 block" style={{ fontFamily: "'DM Mono', monospace", color: GREEN, letterSpacing: "0.25em" }}>
-          — Manifesto
-        </span>
-      </Reveal>
+    <section className="py-36 px-6 md:px-16" style={{ background: "#0d0d0d" }}>
+      <div className="px-6 md:px-16 max-w-screen-xl mx-auto"> {/* Div configurado a cor de fundo */}
+        <Reveal direction="left">
+          <span className="font-mono-label text-xs tracking-widest uppercase mb-6 block" style={{ fontFamily: "'DM Mono', monospace", color: GREEN, letterSpacing: "0.25em" }}>
+            — Manifesto
+          </span>
+        </Reveal>
 
-      <SplitText
-        text="Sua marca não pode ser invisível. Cada pixel conta. Cada scroll importa."
-        className="font-display uppercase"
-        style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(1.0rem, 2vw, 1.5rem)", lineHeight: 1, color: "#f5f5f0" } as React.CSSProperties}
-      />
+        <SplitText
+          text="Sua marca não pode ser invisível. Cada pixel conta. Cada scroll importa."
+          className="font-display uppercase"
+          style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(1.0rem, 2vw, 1.5rem)", lineHeight: 1, color: "#f5f5f0" } as React.CSSProperties}
+        />
 
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl">
-        <Reveal delay={0.1}>
-          <p className="leading-relaxed" style={{ color: "rgba(245,245,240,0.6)", fontSize: "1.1rem" }}>
-            Criamos landing pages e identidades visuais que posicionam marcas no digital com estratégia, personalidade e propósito. Sem soluções genéricas. Sem presença esquecível
-          </p>
-        </Reveal>
-        <Reveal delay={0.25}>
-          <p className="leading-relaxed" style={{ color: "rgba(245,245,240,0.6)", fontSize: "1.1rem" }}>
-            Transformamos ideias em experiências digitais que captam a atenção, fortalecem a marca e aproximam empresas de seus clientes, criando conexões que geram reconhecimento e oportunidades.
-          </p>
-        </Reveal>
-        <Reveal delay={0.4}>
-          <p className="leading-relaxed" style={{ color: "rgba(245,245,240,0.6)", fontSize: "1.1rem" }}>
-           Do planejamento ao lançamento, entregamos uma presença digital que faz sua marca ser vista, lembrada e escolhida, ajudando seu negócio a conquistar espaço em um mercado cada vez mais competitivo.
-          </p>
-        </Reveal>
-        
-      </div>
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl ">
+          <Reveal delay={0.1}>
+            <p className="leading-relaxed" style={{ color: "rgba(245,245,240,0.6)", fontSize: "1.1rem" }}>
+              Criamos landing pages e identidades visuais que posicionam marcas no digital com estratégia, personalidade e propósito. Sem soluções genéricas. Sem presença esquecível
+            </p>
+          </Reveal>
+          <Reveal delay={0.25}>
+            <p className="leading-relaxed" style={{ color: "rgba(245,245,240,0.6)", fontSize: "1.1rem" }}>
+              Transformamos ideias em experiências digitais que captam a atenção, fortalecem a marca e aproximam empresas de seus clientes, criando conexões que geram reconhecimento e oportunidades.
+            </p>
+          </Reveal>
+          <Reveal delay={0.4}>
+            <p className="leading-relaxed" style={{ color: "rgba(245,245,240,0.6)", fontSize: "1.1rem" }}>
+              Do planejamento ao lançamento, entregamos uma presença digital que faz sua marca ser vista, lembrada e escolhida, ajudando seu negócio a conquistar espaço em um mercado cada vez mais competitivo.
+            </p>
+          </Reveal>
+
+        </div>
+      </div> {/* FIMDiv configurado a cor de fundo */}
     </section>
   );
 }
@@ -452,7 +454,7 @@ function Services() {
       items: ["Tudo dos pacotes 01 e 02", "Posts para redes sociais", "Stories templates", "Prioridade de atendimento"],
     },
   ];
-  
+
   return (
     //Espaçamento do Serviçoes para o manifesto
     <section className="py-16 px-6 md:px-16 max-w-screen-xl mx-auto">
@@ -526,7 +528,7 @@ function Stats() {
         {stats.map((s) => (
           <StaggerItem key={s.num}>
             <div className="flex flex-col items-center justify-center py-12 px-6 text-center">
-                {s.icon && <div className="mb-5">{s.icon}</div>}  {/* ← Renderiza os icones */}
+              {s.icon && <div className="mb-5">{s.icon}</div>}  {/* ← Renderiza os icones */}
               <span
                 className="font-display"
                 style={{ fontFamily: "'Anton', sans-serif", fontSize: "clamp(2.8rem, 6vw, 3rem)", lineHeight: 1, color: "#f5f5f0" }}
@@ -990,7 +992,7 @@ export default function App() {
       <Services />
       <Marquee text="DESIGN · ESTRATÉGIA · CONVERSÃO · MARCA · IMPACTO" reverse />
       <Stats />
-      <Work />
+      {/*<Work />*/}
       <Process />
       <TeamSection />
       <CTABanner />
